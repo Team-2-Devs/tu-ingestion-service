@@ -490,7 +490,7 @@ TestResults/
 
 # Local data
 *.db
+**/Data/
 *.sqlite
 *.db-shm
 *.db-wal
-EOF
