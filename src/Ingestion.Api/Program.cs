@@ -1,19 +1,21 @@
+﻿using Ingestion.Infrastructure.Persistence;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
-//
 // Services
-//
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 
+builder.Services.AddDbContext<AppDbContext>(opt =>
+  opt.UseSqlite(builder.Configuration.GetConnectionString("IngestionDb") 
+    ?? "Data Source=ingestion.db"));
+
 var app = builder.Build();
 
-
-//
 // Pipeline
-//
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();

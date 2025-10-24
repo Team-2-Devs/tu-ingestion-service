@@ -491,4 +491,6 @@ TestResults/
 # Local data
 *.db
 *.sqlite
+*.db-shm
+*.db-wal
 EOF
