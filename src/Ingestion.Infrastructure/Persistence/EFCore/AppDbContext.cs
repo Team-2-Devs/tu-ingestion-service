@@ -2,8 +2,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Ingestion.Infrastructure.Persistence;
+namespace Ingestion.Infrastructure.Persistence.EFCore;
 
+/// <summary>Entity Framework Core database context for the Ingestion service.</summary>
 public sealed class AppDbContext : DbContext
 {
   public DbSet<UploadSession> UploadSessions => Set<UploadSession>();
