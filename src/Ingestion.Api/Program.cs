@@ -1,5 +1,5 @@
-﻿using Ingestion.Infrastructure.Persistence;
-using Microsoft.EntityFrameworkCore;
+﻿using Ingestion.Application.DependencyInjection;
+using Ingestion.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,17 +9,18 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
 
-builder.Services.AddDbContext<AppDbContext>(opt =>
-  opt.UseSqlite(builder.Configuration.GetConnectionString("IngestionDb") 
-    ?? "Data Source=ingestion.db"));
+// Compose layers
+builder.Services
+  .AddApplication()
+  .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
 // Pipeline
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+  app.UseSwagger();
+  app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
