@@ -1,10 +1,10 @@
 # API Contract – Ingestion Service (v1)
 
 **Version:** 1.0 (frozen)  
-**Last updated:** October 2025  
+**Last updated:** November 2025
 **Owner:** Trackunit Ingestion Service  
 **Scope:** Public upload interface used by client applications.  
-**Status:** Draft (frozen for implementation) – breaking changes require version bump to /v2/.
+**Status:** Stable – breaking changes require version bump to /v2/.
 
 ---
 
@@ -22,7 +22,7 @@ It persists upload sessions but does not store the actual file data — files are 
 ## Base URL
 
 ```bash
-http://localhost:5231/v1/uploads
+http://localhost:5104/v1/uploads
 ```
 
 Replace host and port when deployed, for example:
@@ -46,7 +46,7 @@ The presigned URL TTL is server-controlled (default 300 seconds). Clients do not
 #### Request
 ```json
 {
-  "filename": "photo.jpg",
+  "filename": "sample.jpg",
   "contentType": "image/jpeg"
 }
 ```
@@ -170,7 +170,7 @@ to obtain a presigned PUT URL.
 
 2. Client uploads directly to the returned URL using HTTP PUT:
 ```bash
-curl -T ./photo.jpg -H "Content-Type: image/jpeg" "<putUrl>"
+curl -T ./sample.jpg -H "Content-Type: image/jpeg" "<putUrl>"
 ```
 
 3. Client confirms completion:

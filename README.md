@@ -32,3 +32,14 @@ Ingestion microservice for Trackunit.
 ```bash
 dotnet run --project src/Ingestion.Api
 ```
+
+## Developer setup
+For local infrastructure (MinIO) and smoke test instructions, see [DEV.md](./docs/DEV.md).
+
+## API Contracts
+Formal versioned specifications of service-to-service interfaces. 
+See [v1-ingestion.md](./docs/api-contracts/v1-ingestion.md).
+
+Frozen contract for `/v1/uploads` endpoints:
+- `POST /start` (implemented)
+- `POST /confirm` (implemented)
