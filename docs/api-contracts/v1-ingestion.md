@@ -1,7 +1,7 @@
 # API Contract – Ingestion Service (v1)
 
 **Version:** 1.0 (frozen)  
-**Last updated:** November 2025
+**Last updated:** November 2025  
 **Owner:** Trackunit Ingestion Service  
 **Scope:** Public upload interface used by client applications.  
 **Status:** Stable – breaking changes require version bump to /v2/.
