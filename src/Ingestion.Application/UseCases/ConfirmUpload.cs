@@ -1,5 +1,6 @@
 ﻿using Ingestion.Application.Ports.Inbound;
 using Ingestion.Application.Ports.Outbound;
+using Ingestion.Domain.Events;
 using Ingestion.Domain.Rules;
 
 namespace Ingestion.Application.UseCases;
@@ -7,8 +8,13 @@ namespace Ingestion.Application.UseCases;
 public sealed class ConfirmUpload : IConfirmUpload
 {
   private readonly IUploadSessionRepository _repo;
+  private readonly IEventPublisher _publisher;
 
-  public ConfirmUpload(IUploadSessionRepository repo) => _repo = repo;
+  public ConfirmUpload(IUploadSessionRepository repo, IEventPublisher publisher)
+  {
+    _repo = repo;
+    _publisher = publisher;
+  }
 
   public async Task<ConfirmUploadResult> ExecuteAsync(ConfirmUploadCommand cmd, CancellationToken ct = default)
   {
@@ -31,6 +37,16 @@ public sealed class ConfirmUpload : IConfirmUpload
     // If valid
     session.MarkUploaded(cmd.Bytes, cmd.Checksum);
     await _repo.SaveChangesAsync(ct);
+
+    var evt = new ImageUploaded(
+      session.Id,
+      session.Key,
+      cmd.Bytes,
+      cmd.Checksum,
+      DateTimeOffset.UtcNow
+      );
+
+    await _publisher.PublishAsync(evt, ct);
 
     return new ConfirmUploadResult.Accepted();
   }
