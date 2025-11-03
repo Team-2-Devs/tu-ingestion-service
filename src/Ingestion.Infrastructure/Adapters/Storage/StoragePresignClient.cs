@@ -1,7 +1,7 @@
 ﻿using System.Net.Http.Json;
 using Ingestion.Application.Ports.Outbound;
 
-namespace Ingestion.Infrastructure.ExternalServices;
+namespace Ingestion.Infrastructure.Adapters.Storage;
 
 /// <summary>HTTP client adapter for communicating with the Storage service to obtain presigned URLs.</summary>
 public sealed class StoragePresignClient(HttpClient http) : IStoragePresignClient

@@ -2,7 +2,7 @@
 using Ingestion.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 
-namespace Ingestion.Infrastructure.Persistence.EFCore;
+namespace Ingestion.Infrastructure.Adapters.Persistence.EFCore;
 
 /// <summary>Entity Framework Core implementation of <see cref="IUploadSessionRepository"/>.</summary>
 public sealed class UploadSessionRepository : IUploadSessionRepository

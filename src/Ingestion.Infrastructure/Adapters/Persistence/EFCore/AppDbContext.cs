@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace Ingestion.Infrastructure.Persistence.EFCore;
+namespace Ingestion.Infrastructure.Adapters.Persistence.EFCore;
 
 /// <summary>Entity Framework Core database context for the Ingestion service.</summary>
 public sealed class AppDbContext : DbContext

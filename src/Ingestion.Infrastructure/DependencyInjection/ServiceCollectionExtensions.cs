@@ -1,6 +1,6 @@
 ﻿using Ingestion.Application.Ports.Outbound;
-using Ingestion.Infrastructure.ExternalServices;
-using Ingestion.Infrastructure.Persistence.EFCore;
+using Ingestion.Infrastructure.Adapters.Persistence.EFCore;
+using Ingestion.Infrastructure.Adapters.Storage;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -15,7 +15,7 @@ public static class ServiceCollectionExtensions
   {
     // Database context
     services.AddDbContext<AppDbContext>(o =>
-      o.UseSqlite(config.GetConnectionString("IngestionDb") ?? "Data Source=../Ingestion.Infrastructure/Persistence/EFCore/Data/Ingestion.db"));
+      o.UseSqlite(config.GetConnectionString("IngestionDb") ?? "Data Source=../../.local/ingestion/ingestion.dev.db"));
 
     // Repository
     services.AddScoped<IUploadSessionRepository, UploadSessionRepository>();
