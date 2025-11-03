@@ -1,10 +1,10 @@
-# API Contract – Ingestion Service (v1)
+# API Contract â€“ Ingestion Service (v1)
 
 **Version:** 1.0 (frozen)  
-**Last updated:** November 2025
+**Last updated:** November 2025  
 **Owner:** Trackunit Ingestion Service  
 **Scope:** Public upload interface used by client applications.  
-**Status:** Stable – breaking changes require version bump to /v2/.
+**Status:** Stable â€“ breaking changes require version bump to /v2/.
 
 ---
 
@@ -15,7 +15,7 @@ It provides endpoints for:
 - Creating a new upload session and receiving a presigned PUT URL (from Storage).  
 - Confirming that an upload has completed and recording its metadata.  
 
-It persists upload sessions but does not store the actual file data — files are uploaded directly to object storage via the presigned URL.
+It persists upload sessions but does not store the actual file data â€” files are uploaded directly to object storage via the presigned URL.
 
 ---
 
@@ -201,8 +201,8 @@ POST /v1/uploads/confirm
 
 ---
 
-## Related contracts
-- [Storage Service v1](../../storage/docs/api/v1/storage.md)
+## Reference
+For service overview and related services, see [README.md](../../README.md).
 
 ---
 
