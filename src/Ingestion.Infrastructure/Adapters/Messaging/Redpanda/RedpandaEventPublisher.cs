@@ -6,6 +6,10 @@ using Microsoft.Extensions.Options;
 
 namespace Ingestion.Infrastructure.Adapters.Messaging.Redpanda;
 
+/// <summary>
+/// Publishes domain events to a Redpanda (Kafka-compatible) message broker.
+/// Implements the <see cref="IEventPublisher"/> outbound port.
+/// </summary>
 public sealed class RedpandaEventPublisher : IEventPublisher
 {
   private readonly ICorrelationContext _correlation;
@@ -24,12 +28,11 @@ public sealed class RedpandaEventPublisher : IEventPublisher
     if (!_options.Events.TryGetValue(eventName, out var eventOptions))
       throw new InvalidOperationException($"No configuration found for Messaging:Events:{eventName}.");
 
-
     var cid = _correlation.GetCorrelationId();
     var partitionKey = evt.ObjectKey;
     var payload = JsonSerializer.SerializeToUtf8Bytes(evt);
 
-    // TODO: send to broker using options.Topic
+    // TODO: send to broker using eventOptions.Topic
     // headers to include:
     // x-schema = eventOptions.Schema
     // x-producer = _options.Producer
@@ -37,7 +40,4 @@ public sealed class RedpandaEventPublisher : IEventPublisher
 
     await Task.CompletedTask;
   }
-
-
-
 }

@@ -2,7 +2,10 @@
 
 namespace Ingestion.Api.Hosting;
 
-/// <summary>Retrieves the correlation ID from the current HTTP request context.</summary>
+/// <summary>
+/// Implementation of <see cref="ICorrelationContext"/> that retrieves the
+/// correlation ID from the current HTTP context, or generates a new one if missing.
+/// </summary>
 public sealed class HttpCorrelationContext : ICorrelationContext
 {
   private readonly IHttpContextAccessor _accessor;

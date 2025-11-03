@@ -6,5 +6,8 @@
 /// </summary>
 public interface ICorrelationContext
 {
+  /// <summary>
+  /// Retrieves the correlation ID associated with the current request or operation.
+  /// </summary>
   public string GetCorrelationId();
 }
