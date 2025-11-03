@@ -1,6 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
+    <Compile Remove="Adapters\Messaging\Kafka\**" />
+    <EmbeddedResource Remove="Adapters\Messaging\Kafka\**" />
+    <None Remove="Adapters\Messaging\Kafka\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Ingestion.Application\Ingestion.Application.csproj" />
     <ProjectReference Include="..\Ingestion.Domain\Ingestion.Domain.csproj" />
   </ItemGroup>
