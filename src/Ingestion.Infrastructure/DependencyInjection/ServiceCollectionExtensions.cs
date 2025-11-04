@@ -1,5 +1,5 @@
 ﻿using Ingestion.Application.Ports.Outbound;
-using Ingestion.Infrastructure.Adapters.Messaging;
+using Ingestion.Infrastructure.Adapters.Messaging.Options;
 using Ingestion.Infrastructure.Adapters.Messaging.Redpanda;
 using Ingestion.Infrastructure.Adapters.Persistence.EFCore;
 using Ingestion.Infrastructure.Adapters.Storage;
