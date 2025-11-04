@@ -1,4 +1,4 @@
-﻿namespace Ingestion.Infrastructure.Adapters.Messaging;
+﻿namespace Ingestion.Infrastructure.Adapters.Messaging.Options;
 
 public sealed class EventOptions
 {
