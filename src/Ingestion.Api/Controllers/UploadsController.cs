@@ -1,5 +1,6 @@
 ﻿using Ingestion.Api.Contracts;
 using Ingestion.Application.Ports.Inbound;
+using Ingestion.Application.Ports.Inbound.Contracts;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ingestion.Api.Controllers;
