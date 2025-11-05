@@ -50,7 +50,7 @@ public static class ServiceCollectionExtensions
       
       client.BaseAddress = new Uri(baseUrl);
 
-      var token = config["Storage:InternalToken"];
+      var token = config["Storage:InternalAccess"];
       if (!string.IsNullOrWhiteSpace(token))
         client.DefaultRequestHeaders.Add("X-Internal-Token", token);
     });
