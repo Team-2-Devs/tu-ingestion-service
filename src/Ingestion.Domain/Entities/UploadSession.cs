@@ -11,6 +11,7 @@ public sealed class UploadSession
   public Guid Id { get; init; }
 
   public required string Key { get; init; }
+  public required string ContentType { get; init; } = default!;
   public DateTimeOffset CreatedAt { get; init; } = DateTimeOffset.UtcNow;
 
   public UploadStatus Status { get; private set; } = UploadStatus.Pending;

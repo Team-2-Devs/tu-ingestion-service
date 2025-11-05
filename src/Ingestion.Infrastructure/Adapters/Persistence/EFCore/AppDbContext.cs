@@ -27,6 +27,10 @@ public sealed class AppDbContext : DbContext
       e.Property(x => x.CreatedAt)
        .IsRequired();
 
+      e.Property(x => x.ContentType)
+       .IsRequired()
+       .HasMaxLength(100);
+
       e.Property(x => x.Status)
        .HasConversion(statusConverter) // store enum as string
        .IsRequired()

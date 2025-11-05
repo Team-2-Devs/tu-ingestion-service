@@ -1,4 +1,5 @@
-﻿using Ingestion.Application.Ports.Inbound;
+﻿using System.Runtime.InteropServices;
+using Ingestion.Application.Ports.Inbound;
 using Ingestion.Application.Ports.Outbound;
 using Ingestion.Domain.Events;
 using Ingestion.Domain.Rules;
@@ -41,6 +42,7 @@ public sealed class ConfirmUpload : IConfirmUpload
     var evt = new ImageUploaded(
       session.Id,
       session.Key,
+      session.ContentType,
       cmd.Bytes,
       cmd.Checksum,
       DateTimeOffset.UtcNow
