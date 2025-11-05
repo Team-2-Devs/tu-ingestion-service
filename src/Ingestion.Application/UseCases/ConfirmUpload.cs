@@ -1,5 +1,6 @@
 ﻿using System.Runtime.InteropServices;
 using Ingestion.Application.Ports.Inbound;
+using Ingestion.Application.Ports.Inbound.Contracts;
 using Ingestion.Application.Ports.Outbound;
 using Ingestion.Domain.Events;
 using Ingestion.Domain.Rules;
