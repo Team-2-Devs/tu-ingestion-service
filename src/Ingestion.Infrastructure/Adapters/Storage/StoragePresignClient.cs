@@ -8,11 +8,11 @@ namespace Ingestion.Infrastructure.Adapters.Storage;
 public sealed class StoragePresignClient(HttpClient http) : IStoragePresignClient
 {
   /// <summary>Requests a presigned PUT URL from the Storage service’s internal API.</summary>
-  public async Task<PresignResponse> PresignPutAsync(PresignPutDto dto, CancellationToken ct = default)
+  public async Task<StoragePresignPutResponse> PresignPutAsync(StoragePresignPutRequest dto, CancellationToken ct = default)
   {
     var response = await http.PostAsJsonAsync("/internal/v1/storage/presign-put", dto, ct);
     response.EnsureSuccessStatusCode();
-    var body = await response.Content.ReadFromJsonAsync<PresignResponse>(cancellationToken: ct);
+    var body = await response.Content.ReadFromJsonAsync<StoragePresignPutResponse>(cancellationToken: ct);
 
     return body!;
   }

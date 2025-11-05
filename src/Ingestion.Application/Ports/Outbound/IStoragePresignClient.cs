@@ -11,5 +11,5 @@ public interface IStoragePresignClient
   /// <param name="dto">The presign request parameters.</param>
   /// <param name="ct">Cancellation token.</param>
   /// <returns>The generated presigned URL and expiry information.</returns>
-  public Task<PresignResponse> PresignPutAsync(PresignPutDto dto, CancellationToken ct = default);
+  public Task<StoragePresignPutResponse> PresignPutAsync(StoragePresignPutRequest dto, CancellationToken ct = default);
 }

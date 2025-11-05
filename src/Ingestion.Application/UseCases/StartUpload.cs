@@ -39,7 +39,7 @@ public sealed class StartUpload : IStartUpload
     var key = ObjectKeyFactory.ForImage(cmd.Filename, DateTimeOffset.UtcNow);
     
     var presign = await _storage.PresignPutAsync(
-      new PresignPutDto { Key = key, ContentType = cmd.ContentType, TtlSec = DefaultTtlSec }, ct);
+      new StoragePresignPutRequest { Key = key, ContentType = cmd.ContentType, TtlSec = DefaultTtlSec }, ct);
 
     var session = new UploadSession { Id = Guid.NewGuid(), Key = key, ContentType = cmd.ContentType };
     await _repo.AddAsync(session, ct);

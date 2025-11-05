@@ -1,7 +1,7 @@
 ﻿namespace Ingestion.Application.Ports.Outbound.Contracts;
 
 /// <summary>Data transfer object for requesting a presigned PUT URL from the Storage service.</summary>
-public sealed record PresignPutDto
+public sealed record StoragePresignPutRequest
 {
   /// <summary>The unique object key identifying the file in storage.</summary>
   public required string Key { get; init; }
