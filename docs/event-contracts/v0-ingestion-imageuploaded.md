@@ -1,7 +1,7 @@
 ﻿# Messaging Contract – ImageUploaded (v0)
 
 **Version:** Draft v0 (unfrozen)  
-**Last updated:** 2025-11-02  
+**Last updated:** 2025-11-05  
 **Owner:** Trackunit Ingestion Service  
 **Status:** Draft – breaking changes allowed until v1
 
@@ -34,6 +34,7 @@ Signals that the file exists in object storage and is ready for downstream proce
 |-------|------|-------------|
 | uploadId | string | UUID of the upload session |
 | objectKey | string | Object storage key (`images/yyyy/MM/dd/{guid}.{ext}`) |
+| contentType | string | MIME type of the uploaded file (e.g., `image/jpeg`) |
 | bytes | number | File size in bytes (>0) |
 | checksum | string | SHA-256 in format `sha256:<64-hex>` |
 | occurredAt | string | ISO 8601 UTC time when upload was confirmed |
@@ -43,6 +44,7 @@ Example:
 {
   "uploadId": "2c2c7f4d-2a3d-4e23-8b2f-3a4f5a6b7c8d",
   "objectKey": "images/2025/11/02/edb2ccee-4b9b-4d9f-9f5a-111122223333.jpg",
+  "contentType": "image/jpeg",
   "bytes": 438127,
   "checksum": "sha256:3e4f...a9c",
   "occurredAt": "2025-11-02T16:05:43Z"
@@ -83,6 +85,7 @@ Example:
 | Date | Version | Notes |
 |------|----------|-------|
 | 2025-11-02 | v0 | Initial draft version |
+| 2025-11-05 | v0 | Added contentType to payload |
 
 ---
 
