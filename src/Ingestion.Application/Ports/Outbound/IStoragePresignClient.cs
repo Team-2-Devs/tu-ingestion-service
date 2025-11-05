@@ -8,8 +8,8 @@ public interface IStoragePresignClient
   /// <summary>
   /// Requests a presigned PUT URL from the Storage service for uploading an object.
   /// </summary>
-  /// <param name="dto">The presign request parameters.</param>
+  /// <param name="req">The presign request parameters.</param>
   /// <param name="ct">Cancellation token.</param>
   /// <returns>The generated presigned URL and expiry information.</returns>
-  public Task<StoragePresignPutResponse> PresignPutAsync(StoragePresignPutRequest dto, CancellationToken ct = default);
+  public Task<StoragePresignPutResponse> PresignPutAsync(StoragePresignPutRequest req, CancellationToken ct = default);
 }
