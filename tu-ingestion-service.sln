@@ -28,6 +28,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Directory.Build.props = Directory.Build.props
 		global.json = global.json
 		README.md = README.md
+		docs\setup\redpanda-access.md = docs\setup\redpanda-access.md
 		docs\event-contracts\v0-ingestion-imageuploaded.md = docs\event-contracts\v0-ingestion-imageuploaded.md
 		docs\api-contracts\v1-ingestion.md = docs\api-contracts\v1-ingestion.md
 	EndProjectSection
