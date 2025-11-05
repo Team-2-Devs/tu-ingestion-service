@@ -10,7 +10,7 @@ namespace Ingestion.Application.UseCases;
 
 public sealed class StartUpload : IStartUpload
 {
-  private const int DefaultTtlSec = 300;
+  private const int DefaultTtlSec = 300; // 5 minutes – presigned URL lifetime
 
   private readonly IStoragePresignClient _storage;
   private readonly IUploadSessionRepository _repo;
