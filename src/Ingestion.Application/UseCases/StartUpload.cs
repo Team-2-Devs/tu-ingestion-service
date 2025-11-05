@@ -1,6 +1,7 @@
 ﻿using Ingestion.Application.Ports.Inbound;
-using Ingestion.Application.Ports.Outbound;
 using Ingestion.Application.Ports.Inbound.Contracts;
+using Ingestion.Application.Ports.Outbound;
+using Ingestion.Application.Ports.Outbound.Contracts;
 using Ingestion.Domain.Rules;
 using Ingestion.Domain.Entities;
 using Ingestion.Domain.Factories;

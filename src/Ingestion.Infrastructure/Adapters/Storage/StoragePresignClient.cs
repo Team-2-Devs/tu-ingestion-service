@@ -1,5 +1,6 @@
 ﻿using System.Net.Http.Json;
 using Ingestion.Application.Ports.Outbound;
+using Ingestion.Application.Ports.Outbound.Contracts;
 
 namespace Ingestion.Infrastructure.Adapters.Storage;
 
