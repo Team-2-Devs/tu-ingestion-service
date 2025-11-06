@@ -51,4 +51,4 @@ Frozen contract for `/v1/uploads` endpoints:
 
 ## Messaging Contracts
 Formal definitions of published domain events for downstream services.  
-See [ImageUploaded (v0)](./docs/messaging-contracts/ImageUploaded-v0.md).
+See [ImageUploaded (v0)](./docs/event-contracts/v0-ingestion-imageuploaded.md).
