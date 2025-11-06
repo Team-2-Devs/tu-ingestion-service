@@ -39,6 +39,8 @@ dotnet run --project src/Ingestion.Api
 ## Developer setup
 For local infrastructure (MinIO) and smoke test instructions, see [DEV.md](./docs/DEV.md).
 
+For event publishing and broker connection details, see [Redpanda Access Guide](./docs/redpanda-access.md).
+
 ## API Contracts
 Formal versioned specifications of service-to-service interfaces. 
 See [v1-ingestion.md](./docs/api-contracts/v1-ingestion.md).
@@ -46,3 +48,9 @@ See [v1-ingestion.md](./docs/api-contracts/v1-ingestion.md).
 Frozen contract for `/v1/uploads` endpoints:
 - `POST /start` (implemented)
 - `POST /confirm` (implemented)
+
+---
+
+## Messaging Contracts
+Formal definitions of published domain events for downstream services.  
+See [ImageUploaded (v0)](./docs/messaging-contracts/ImageUploaded-v0.md).
