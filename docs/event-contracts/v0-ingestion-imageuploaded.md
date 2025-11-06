@@ -1,7 +1,7 @@
 ﻿# Messaging Contract – ImageUploaded (v0)
 
 **Version:** Draft v0 (unfrozen)  
-**Last updated:** 2025-11-05  
+**Last updated:** 2025-11-06  
 **Owner:** Trackunit Ingestion Service  
 **Status:** Draft – breaking changes allowed until v1
 
@@ -14,7 +14,7 @@ Signals that the file exists in object storage and is ready for downstream proce
 ---
 
 ## Topic and Key
-- **Topic:** `tu.images.uploaded.v0`  
+- **Topic:** `tu.images.uploaded`  
 - **Message key:** `objectKey`  
   - Guarantees ordering for all events related to the same image.
 
@@ -86,6 +86,7 @@ Example:
 |------|----------|-------|
 | 2025-11-02 | v0 | Initial draft version |
 | 2025-11-05 | v0 | Added contentType to payload |
+| 2025-11-06 | v0 | Updated topic name to `tu.images.uploaded` (version now handled via header) |
 
 ---
 
