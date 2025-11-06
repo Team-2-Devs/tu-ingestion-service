@@ -46,7 +46,24 @@ Your Kafka client (e.g., Confluent.Kafka) should be configured as:
 
 ---
 
+## Topic Information
+
+| Setting | Value |
+|----------|--------|
+| **Topic name** | `tu.images.uploaded` |
+| **Partitions** | 4 |
+| **Replication** | 1 |
+| **Retention** | 7 days |
+| **Cleanup policy** | delete |
+| **Key** | `objectKey` |
+
+The topic already exists and is centrally managed.
+Only predefined topics are allowed. Ask Kenneth Sørensen to create new ones if needed.
+
+
+---
+
 ## Notes
 - Connection will close when you terminate `cloudflared`.
 - Authentication is handled through Cloudflare Zero Trust policy and currently expires once per week.
-- Use this method only for development and testing.
+- The broker is **development-only** (single node, no redundancy).
