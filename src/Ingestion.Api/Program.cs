@@ -1,4 +1,6 @@
-﻿using Ingestion.Application.DependencyInjection;
+﻿using Ingestion.Api.DependencyInjection;
+using Ingestion.Api.Hosting;
+using Ingestion.Application.DependencyInjection;
 using Ingestion.Infrastructure.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,10 +10,10 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddHealthChecks();
-builder.Services.AddHttpContextAccessor();
 
 // Compose layers
 builder.Services
+  .AddApi()
   .AddApplication()
   .AddInfrastructure(builder.Configuration);
 
@@ -25,6 +27,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseMiddleware<CorrelationMiddleware>();
 
 app.UseAuthorization();
 
