@@ -3,6 +3,9 @@
 
 Ingestion microservice for Trackunit.
 
+## Status
+- Under development
+
 ## Purpose
 - Handle image upload initiation and confirmation
 - Track upload sessions for validation and auditing
