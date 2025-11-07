@@ -2,7 +2,7 @@
 
 namespace Ingestion.Application.Ports.Inbound;
 
-// <summary>Defines the inbound port for confirming completed uploads.</summary>
+/// <summary>Defines the inbound port for confirming completed uploads.</summary>
 public interface IConfirmUpload
 {
   /// <summary>

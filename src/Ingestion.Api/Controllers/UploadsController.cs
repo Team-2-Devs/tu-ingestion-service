@@ -7,7 +7,7 @@ namespace Ingestion.Api.Controllers;
 
 [ApiController]
 [Route("v1/uploads")]
-public class UploadsController : ControllerBase
+public sealed class UploadsController : ControllerBase
 {
   private readonly IStartUpload _startUpload;
   private readonly IConfirmUpload _confirmUpload;
