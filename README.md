@@ -48,6 +48,7 @@ See [v1-ingestion.md](./docs/api-contracts/v1-ingestion.md).
 Frozen contract for `/v1/uploads` endpoints:
 - `POST /start` (implemented)
 - `POST /confirm` (implemented)
+- `GET  /health` (implemented)
 
 ## Messaging Contracts
 Formal definitions of published domain events for downstream services.  
