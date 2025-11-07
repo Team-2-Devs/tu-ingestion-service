@@ -22,11 +22,11 @@ public sealed class RedpandaEventPublisher : IEventPublisher
   public RedpandaEventPublisher(
     ICorrelationContext correlation, 
     IOptions<MessagingOptions> messagingOptions,
-    RedpandaProducerFactory factory)
+    IProducer<string, byte[]> producer)
   {
     _correlation = correlation;
     _messagingOptions = messagingOptions.Value;
-    _producer = factory.CreateProducer();
+    _producer = producer;
   }
 
   public async Task PublishAsync(ImageUploaded evt, CancellationToken ct)

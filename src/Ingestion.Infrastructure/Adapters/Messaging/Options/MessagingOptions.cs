@@ -7,6 +7,5 @@
 public sealed class MessagingOptions
 {
   public string Producer { get; set; } = "ingestion";
-  public KafkaOptions Kafka { get; init; } = new();
   public Dictionary<string, EventOptions> Events { get; init; } = new();
 }
