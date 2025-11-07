@@ -67,3 +67,12 @@ Only predefined topics are allowed. Ask Kenneth Sørensen to create new ones if n
 - Connection will close when you terminate `cloudflared`.
 - Authentication is handled through Cloudflare Zero Trust policy and currently expires once per week.
 - The broker is **development-only** (single node, no redundancy).
+
+---
+
+## Reference
+For service overview and related services, see [README.md](../../README.md).
+
+---
+
+**End of document**
