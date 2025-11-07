@@ -54,8 +54,8 @@ The presigned URL TTL is server-controlled (default 300 seconds). Clients do not
 #### Parameters
 | Field | Type | Required | Description |
 |-------|------|-----------|--------------|
-| filename | string | yes | Original filename; extension used to determine object type. |
-| contentType | string | yes | MIME type, must be one of: image/jpeg, image/png, image/webp. |
+| `filename` | string | yes | Original filename; extension used to determine object type. |
+| `contentType` | string | yes | MIME type, must be one of: image/jpeg, image/png, image/webp. |
 
 #### Response 200 OK
 ```json
@@ -69,10 +69,10 @@ The presigned URL TTL is server-controlled (default 300 seconds). Clients do not
 
 | Field | Type | Description |
 |-------|------|--------------|
-| uploadId | string (UUID) | Unique ID for this upload session. |
-| key | string | Generated object key under images/{yyyy}/{MM}/{dd}/{guid}.{ext}. |
-| putUrl | string | Presigned PUT URL returned from Storage service. |
-| expiresAt | string (ISO 8601) | UTC timestamp when the presigned URL expires. |
+| `uploadId` | string (UUID) | Unique ID for this upload session. |
+| `key` | string | Generated object key under images/{yyyy}/{MM}/{dd}/{guid}.{ext}. |
+| `putUrl` | string | Presigned PUT URL returned from Storage service. |
+| `expiresAt` | string (ISO 8601) | UTC timestamp when the presigned URL expires. |
 
 #### Response 422 Unprocessable Entity
 ```json
@@ -116,9 +116,9 @@ In future versions, this will also emit an ImageUploaded event for downstream co
 #### Parameters
 | Field | Type | Required | Description |
 |-------|------|-----------|--------------|
-| uploadId | string (UUID) | yes | ID returned from /start. |
-| bytes | integer | yes | File size in bytes. Must be > 0. |
-| checksum | string | yes | SHA256 checksum in the format sha256:<hex>. |
+| `uploadId` | string (UUID) | yes | ID returned from /start. |
+| `bytes` | integer | yes | File size in bytes. Must be > 0. |
+| `checksum` | string | yes | SHA256 checksum in the format sha256:<hex>. |
 
 #### Response 202 Accepted
 ```json
