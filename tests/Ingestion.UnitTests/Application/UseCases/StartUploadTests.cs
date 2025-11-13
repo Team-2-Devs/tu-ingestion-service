@@ -32,13 +32,13 @@ public sealed class StartUploadTests
     success.PutUrl.Should().Be(storage.UrlToReturn);
     success.ExpiresAt.Should().Be(storage.ExpiresAtToReturn);
 
-    // Outbound call arguments
+    // Verify storage client interaction
     storage.LastPutRequest.Should().NotBeNull();
     storage.LastPutRequest!.ContentType.Should().Be("image/png");
     storage.LastPutRequest!.TtlSec.Should().Be(300);
     storage.LastPutRequest!.Key.Should().Be(success.Key);
 
-    // Persistence side effects
+    // Verify session persisted
     repo.Added.Should().HaveCount(1);
     repo.Added[0].Id.Should().Be(success.UploadId);
     repo.Added[0].Key.Should().Be(success.Key);
