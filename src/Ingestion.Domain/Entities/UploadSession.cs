@@ -8,7 +8,7 @@ public enum UploadStatus
 
 public sealed class UploadSession
 {
-  public Guid Id { get; init; }
+  public required Guid Id { get; init; }
 
   public required string Key { get; init; }
   public required string ContentType { get; init; } = default!;
