@@ -72,7 +72,7 @@ public static class ServiceCollectionExtensions
 
       var token = config["Storage:InternalAccess"];
       if (!string.IsNullOrWhiteSpace(token))
-        client.DefaultRequestHeaders.Add("X-Internal-Token", token);
+        client.DefaultRequestHeaders.Add("x-internal-token", token);
     });
   }
 }
