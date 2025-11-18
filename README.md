@@ -39,7 +39,7 @@ dotnet run --project src/Ingestion.Api
 ## Developer setup
 For local infrastructure (MinIO) and smoke test instructions, see [DEV.md](./docs/DEV.md).
 
-For event publishing and broker connection details, see [Redpanda Access Guide](./docs/setup/redpanda-access.md).
+For event publishing and broker connection details, see [Redpanda Access Guide](./docs/setup/tailscale-redpanda-access.md).
 
 ## API Contracts
 Formal versioned specifications of service-to-service interfaces. 
