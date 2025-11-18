@@ -1,4 +1,14 @@
-# Redpanda Access via Cloudflare Tunnel
+# DEPRECATED — Cloudflare Tunnel
+
+This document is kept only for reference and exam documentation.
+Cloudflare Tunnel cannot proxy Kafka traffic reliably.
+
+Please see the active guide here:
+[Redpanda Access via Tailscale](redpanda-access-tailscale.md)  
+
+# Archived Content below (Do Not Use)
+
+## Redpanda Access via Cloudflare Tunnel
 
 This guide explains how external services (e.g., AI Service) can connect securely to the hosted Redpanda broker.
 
