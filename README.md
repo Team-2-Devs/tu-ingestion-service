@@ -1,55 +1,64 @@
 # Trackunit Ingestion Service
+
 ![CI](https://github.com/Team-2-Devs/tu-ingestion-service/actions/workflows/ci.yml/badge.svg)
 
 Ingestion microservice for Trackunit.
 
 ## Status
-- Active development
+
+* Active Development
 
 ## Purpose
-- Handle image upload initiation and confirmation
-- Track upload sessions for validation and auditing
-- Coordinate with Storage for pre-signed PUT URLs
-- Publish `ImageUploaded` events for downstream services  
+
+* Handle image upload initiation and confirmation
+* Coordinate with Storage to fetch pre-signed PUT URLs
+* Track upload sessions in a local SQL database
+* Validate uploaded objects (checksum, byte length)
+* Publish `ImageUploaded` events for downstream services
 
 ## Endpoints (v1)
+
 *Note: endpoints are defined here as part of the design. They are not yet implemented unless otherwise stated.*
 
-- POST /v1/uploads/start - create upload session, return pre-signed PUT URL  
-- POST /v1/uploads/confirm - validate, store metadata, publish event  
-- GET  /v1/uploads/{id}/status - (planned) check upload status  
-- GET  /health – service health check    
+* POST `/v1/uploads/start` – create upload session and return pre-signed PUT URL
+* POST `/v1/uploads/confirm` – validate object, store metadata, publish event
+* GET  `/v1/uploads/{id}/status` – (planned) retrieve upload session state
+* GET  `/health` – service health check
 
 ## Tech
-- .NET 8, ASP.NET Core Web API  
-- Clean/hexagonal layering – Api, Application, Domain, Infrastructure
-- Database (SQL) for session tracking and validation  
-- Kafka messaging  
-- CI via reusable org workflow (see [Team-2-Devs/.github](https://github.com/Team-2-Devs/.github))
+
+* .NET 8, ASP.NET Core Web API
+* Clean/hexagonal layering – Api, Application, Domain, Infrastructure
+* SQLite for local development
+* Kafka-compatible messaging via Redpanda
+* CI via reusable org workflow (see [Team-2-Devs/.github](https://github.com/Team-2-Devs/.github))
 
 ## Related services
-- [tu-storage-service](https://github.com/Team-2-Devs/tu-storage-service) – issues pre-signed PUT/GET URLs
-- [tu-media-access-service](https://github.com/Team-2-Devs/tu-media-access-service) – provides authorized access to media via pre-signed GET from Storage
 
-## Local dev
-```bash
-dotnet run --project src/Ingestion.Api
-```
+* [tu-storage-service](https://github.com/Team-2-Devs/tu-storage-service) – issues pre-signed PUT/GET URLs
+* [tu-media-access-service](https://github.com/Team-2-Devs/tu-media-access-service) – provides authorized access to media via pre-signed GET from Storage
 
-## Developer setup
-For local infrastructure (MinIO) and smoke test instructions, see [DEV.md](./docs/DEV.md).
+## Local development
 
-For event publishing and broker connection details, see [Redpanda Access Guide](./docs/setup/tailscale-redpanda-access.md).
+See [DEV.md](./docs/DEV.md) for full setup instructions.
+
+Two modes are supported:
+
+* **Docker Compose (recommended)** – runs Ingestion.Api in a container with SQLite
+* **dotnet run** – for debugging in IDE
 
 ## API Contracts
-Formal versioned specifications of service-to-service interfaces. 
+
+Formal versioned specifications for `/v1/uploads` endpoints.
 See [v1-ingestion.md](./docs/api-contracts/v1-ingestion.md).
 
-Frozen contract for `/v1/uploads` endpoints:
-- `POST /start` (implemented)
-- `POST /confirm` (implemented)
-- `GET  /health` (implemented)
+Frozen contract for v1:
+
+* `POST /start` (implemented)
+* `POST /confirm` (implemented)
+* `GET  /health` (implemented)
 
 ## Messaging Contracts
-Formal definitions of published domain events for downstream services.  
-See [ImageUploaded (v0)](./docs/event-contracts/v0-ingestion-imageuploaded.md).
+
+Formal definitions of published ingestion events.
+See [`ImageUploaded` (v0)](./docs/event-contracts/v0-ingestion-imageuploaded.md).
