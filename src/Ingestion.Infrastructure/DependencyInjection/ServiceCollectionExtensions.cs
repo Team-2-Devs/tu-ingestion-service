@@ -1,4 +1,5 @@
 ﻿using Confluent.Kafka;
+using Ingestion.Application.Abstractions;
 using Ingestion.Application.Ports.Outbound;
 using Ingestion.Infrastructure.Adapters.Messaging.Options;
 using Ingestion.Infrastructure.Adapters.Messaging.Redpanda;
@@ -59,6 +60,9 @@ public static class ServiceCollectionExtensions
 
     // Register repository
     services.AddScoped<IUploadSessionRepository, UploadSessionRepository>();
+
+    // Register database initializer
+    services.AddScoped<IDatabaseInitializer, EfCoreDatabaseInitializer>();
   }
 
   private static void AddStorage(IServiceCollection services, IConfiguration config)

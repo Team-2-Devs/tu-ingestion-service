@@ -1,5 +1,6 @@
 ﻿using Ingestion.Api.DependencyInjection;
 using Ingestion.Api.Hosting;
+using Ingestion.Application.Abstractions;
 using Ingestion.Application.DependencyInjection;
 using Ingestion.Infrastructure.DependencyInjection;
 
@@ -18,6 +19,15 @@ builder.Services
   .AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
+
+// Run database initialization once at startup
+using (var scope = app.Services.CreateScope())
+{
+  var initializer = scope.ServiceProvider
+      .GetRequiredService<IDatabaseInitializer>();
+
+  await initializer.InitializeAsync();
+}
 
 // Pipeline
 if (app.Environment.IsDevelopment())
