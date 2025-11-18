@@ -1,4 +1,4 @@
-# Redpanda Access via
+# Redpanda Access via Tailscale
 
 This guide explains how team members connect securely to the hosted Redpanda broker running in the homelab environment.
 
