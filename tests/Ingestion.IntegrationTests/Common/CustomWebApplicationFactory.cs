@@ -1,4 +1,5 @@
-﻿using Ingestion.Application.Ports.Outbound;
+﻿using Ingestion.Application.Abstractions;
+using Ingestion.Application.Ports.Outbound;
 using Ingestion.Application.Ports.Outbound.Contracts;
 using Ingestion.Domain.Entities;
 using Ingestion.Domain.Events;
@@ -33,6 +34,14 @@ public sealed class CustomWebApplicationFactory : WebApplicationFactory<Program>
       foreach (var d in publisherDescriptors)
         services.Remove(d);
       services.AddSingleton<IEventPublisher, FakeEventPublisher>();
+
+      // Replace IDatabaseInitializer with a no-op.
+      // The integration tests use fake repositories and do not require a real SQLite database.
+      // This prevents the default initializer from running migrations and attempting to access the real DB file.
+      var dbInitDescriptors = services.Where(d => d.ServiceType == typeof(IDatabaseInitializer)).ToList();
+      foreach (var d in dbInitDescriptors)
+        services.Remove(d);
+      services.AddSingleton<IDatabaseInitializer, NoopDatabaseInitializer>();
     });
   }
 }
