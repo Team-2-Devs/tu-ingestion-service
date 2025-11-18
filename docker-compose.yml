@@ -1,0 +1,26 @@
+services:
+  ingestion-api:
+    build:
+      context: .
+      dockerfile: src/Ingestion.Api/Dockerfile
+    ports:
+      - "8090:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+
+      # Messaging / Redpanda
+      Messaging__Redpanda__BootstrapServers: "${REDPANDA_BOOTSTRAP_SERVERS}"
+
+      # Storage settings (used when calling Storage.Api)
+      Storage__BaseUrl: "${STORAGE_BASE_URL}"
+      Storage__InternalAccess: "${INTERNAL_AUTH_API_KEY}"
+
+      # Override SQLite connection string for container
+      ConnectionStrings__IngestionDb: "Data Source=/app/data/ingestion.dev.db"
+    env_file:
+      - .env
+    volumes:
+      - ingestion-data:/app/data
+
+volumes:
+  ingestion-data:
