@@ -105,12 +105,6 @@ If you need a new topic, contact Kenneth Sørensen.
 ---
 
 ## Reference
-
-For a full overview of the system architecture and related services, see the root README.
-
----
-
-## Reference
 For service overview and related services, see [README.md](../README.md).
 
 ---
